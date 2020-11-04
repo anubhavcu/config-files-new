@@ -1,0 +1,314 @@
+
+
+" au BufNewFile,BufRead * .py
+"             \ set tabstop=4
+"             \ set softtabstop=4
+"             \ set shiftwidth=4
+"             \ set textwidth=79
+"             \ set expandtab
+"             \ set autoindent
+"             \ set fileformat=unix
+
+" au BufNewFile,BufRead * .js,  * .html, * .css
+"             \ set tabstop=2
+"             \ set softtabstop=2
+"             \ set shiftwidth=2
+
+" main purpose for below 2 lines is for css autocomplete suggestions --> press <C-x> then <C-o>
+" also use <C-n> for completing words(id's,classNames etc based on files opened) - no config needed for using <C-n>
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete
+
+
+let g:ale_fix_on_save = 1
+set nocompatible
+syntax on
+
+set showcmd
+set shortmess+=I
+set number
+set relativenumber
+set laststatus=2
+set backspace=indent,eol,start
+set hidden
+set ignorecase
+set smartcase
+set incsearch
+set hls     " highlight search
+set tabstop=4
+set expandtab   " converts tabs into spaces
+filetype plugin indent on
+set tabstop=8
+set expandtab
+set softtabstop=4
+set shiftwidth=4
+filetype indent on
+" Unbind some useless/annoying default key bindings.
+" 'Q' in normal mode enters Ex mode. You almost never want this.
+nmap Q <Nop>
+" Disable audible bell because it's annoying.
+set noerrorbells visualbell t_vb=
+
+" Enable mouse support. You should avoid relying on this too much, but it can
+" sometimes be convenient.
+set mouse+=a
+
+" Try to prevent bad habits like using the arrow keys for movement.
+" Do this in normal mode...
+nnoremap <Left>  :echoe "Use h"<CR>
+nnoremap <Right> :echoe "Use l"<CR>
+nnoremap <Up>    :echoe "Use k"<CR>
+nnoremap <Down>  :echoe "Use j"<CR>
+" ...and in insert mode
+inoremap <Left>  <ESC>:echoe "Use h"<CR>
+inoremap <Right> <ESC>:echoe "Use l"<CR>
+inoremap <Up>    <ESC>:echoe "Use k"<CR>
+inoremap <Down>  <ESC>:echoe "Use j"<CR>
+
+" opening a new window split down/right
+set splitbelow
+set splitright
+
+" map leader key to space (default was \)
+let mapleader = " "
+
+" switching between split windows
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+
+" saving current buffer
+nnoremap <leader>o :w<cr>
+
+"move lines around
+nnoremap <leader>k :m-2<cr>==
+nnoremap <leader>j :m+<cr>==
+xnoremap <leader>k :m-2<cr>gv=gv
+xnoremap <leader>j :m'>+<cr>gv=gv
+
+" organise all swap files in one place, note since swap files are not in same directory of file, it will not warn if a file is already open in other buffer
+set directory^=$HOME/.vim/temp//
+set noswapfile " dont create swp files or any backup files in vim
+
+" ---- Plugins -----
+
+" Specify a directory for plugins
+" - For Neovim: stdpath('data') . '/plugged'
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
+
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-fugitive'   " for git
+Plug 'tpope/vim-commentary' " for commenting a line or block
+Plug 'tpope/vim-obsession'  " storing vim sessions
+Plug 'preservim/nerdtree'   " file explorer
+Plug 'jeetsukumaran/vim-buffergator'    " buffers explorer
+Plug 'morhetz/gruvbox'      " gruvbox theme
+Plug 'ctrlpvim/ctrlp.vim'   " file, buffer finder
+Plug 'vim-airline/vim-airline'  " statusline theme
+Plug 'vim-airline/vim-airline-themes'   " statusline theme
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc-python'
+" Plug 'davidhalter/jedi-vim'
+Plug 'vim-syntastic/syntastic'
+Plug 'Chiel92/vim-autoformat'
+Plug 'mLaursen/vim-react-snippets'
+Plug 'airblade/vim-gitgutter'   " tracking git changes
+Plug 'mattn/emmet-vim'      " html css snippets (also understands jsx code )
+" Plug 'dense-analysis/ale'   " linter and fixer
+Plug 'Yggdroot/indentline'  " shows lines on indent
+Plug 'mxw/vim-jsx'          " for jsx syntax Plug 'othree/yajs.vim'      " for js syntax
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'easymotion/vim-easymotion'
+Plug 'leafgarland/typescript-vim'   " for typescript syntax - remove if problem occurs
+" Plug 'jmcantrell/vim-virtualenv'
+Plug 'vim-python/python-syntax'     " for python syntax highlighting
+Plug 'moll/vim-node'
+" Plug 'SirVer/ultisnips'
+" Plug 'ycm-core/YouCompleteMe'
+
+" python-syntax
+let g:python_highlight_all = 1
+let g:python_highlight_space_errors = 0
+let g:python_highlight_indent_errors = 0
+
+" indentline
+let g:indentLine_color_term = 239
+set conceallevel=1
+let g:indentLine_conceallevel=1
+
+" prettier
+let g:prettier#autoformat = 1
+let g:prettier#autoformat_require_pragma = 0
+
+
+" Initialize plugin system
+call plug#end()
+
+
+" leafgarland
+"automatically indent chained methods as typed
+setlocal indentkeys+=0
+let g:typescript_indent_disable = 1     "disabling plugins custom indenter
+
+
+
+
+" easymotion
+" <Leader>f{char} to move to {char}
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+
+" s{char}{char} to move to {char}{char}
+nmap s <Plug>(easymotion-overwin-f2)
+
+" Move to line
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
+
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
+
+
+
+" autoformat
+" let g:autoformat_autoindent = 0
+" let g:autoformat_retab = 0
+" let g:autoformat_remove_trailing_spaces = 0
+
+" vim-commentary
+autocmd FileType apache setlocal commentstring=#\ %s    " for supporting multiple languages
+
+" vim-obsession- adding to statusline
+set statusline+=%{ObsessionStatus()}
+
+
+" syntastic
+" set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" remove below line to show warning msgs also
+let g:syntastic_quiet_messages = {
+            \ "!level":  "errors",
+            \ "type":    "style",
+            \ "regex":   '.*',
+            \ "file:p":  '.*'}
+
+
+
+
+"nerdtree remap
+nnoremap <Leader>n : NERDTreeToggle<CR>
+
+
+"buffergator
+let g:buffergator_suppress_keymaps = 1
+nnoremap <Leader>b :BuffergatorToggle<CR>
+let g:buffergator_viewport_split_policy="T"
+let g:buffergator_autoexpand_on_split=0
+let g:buffergator_split_size=10
+let g:buffergator_display_regime='filepath'
+
+""emmet vim
+"let g:user_emmet_leader_key='<Tab>'
+"let g:user_emmet_settings = {
+"                        \  'javascript.jsx' : {
+"                        \      'extends' : 'jsx',
+"                        \  },
+"                        \}
+
+
+"gruvbox
+autocmd vimenter * colorscheme gruvbox
+set background=dark
+let g:gruvbox_bold=1
+let g:gruvbox_contrast_dark = 'hard'
+
+
+" ctrlp
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_show_hidden = 1
+
+
+"airline
+let g:airline#extensions#tabline#enabled = 1
+" let g:airline_left_sep = '»'
+" let g:airline_left_sep = '▶'
+" let g:airline_right_sep = '«'
+" let g:airline_right_sep = '◀'
+
+
+
+"-----------ale
+
+let g:ale_linters = {'python3' : ['flake8', 'pydocstyle', 'bandit', 'mypy', 'autopep8']}
+" let g:ale_fixers = {'*': [], 'python':['black', 'isort']}
+let g:ale_fixers = {'*': ['remove_trailing_lines', 'trim_whitespace', 'add_blank_lines_for_python_control_statements', 'reorder-python-imports'], 'python3': ['black', 'isort', 'autopep8', 'yapf']}
+let b:ale_fixers = {'javascript': ['prettier',]}
+
+let g:ale_fix_on_save = 1
+
+
+
+
+"coc
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+    let col = col('.') - 1
+
+    return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+            \ pumvisible() ? "\<C-n>" :
+            \ <SID>check_back_space() ? "\<Tab>" :
+            \ coc#refresh()
+
+
+" coc config
+let g:coc_global_extensions = [
+            \ 'coc-snippets',
+            \ 'coc-pairs',
+            \ 'coc-prettier',
+            \ 'coc-tsserver',
+            \ 'coc-json',
+            \ ]
+
+" \ 'coc-eslint',
+" coc snippets   - press enter to select a suggestion whether a snippet or keyword , use tab to navigate
+inoremap <silent><expr> <cr>
+            \ pumvisible() ? coc#_select_confirm() :
+            \"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+
+" let g:LanguageClient_serverCommands = {
+"             \ 'cpp': ['clangd'],
+"             \ }
+
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+
+" for running python code in current buffer
+autocmd FileType python map <buffer> <F9> :w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+autocmd FileType python imap <buffer> <F9> <esc>:w<CR>:exec '!python3' shellescape(@%, 1)<CR>
+
+
+
+au BufWrite * :Autoformat   " autoformat files on save (install pep8 in terminal for python and for js install js-beautify)
+
+" to avoid commenting when moving to a new line with o/O from a commented line
+au FileType * set fo-=c fo-=r fo-=o

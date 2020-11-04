@@ -1,0 +1,308 @@
+" this vimrc is configured only for web dev-js,react, html, css
+
+set encoding=UTF-8  " specially for devicons
+set nocompatible
+syntax on
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete    "for using vim's built-in suggestion for autocomplete by checking all files, use <C-n>
+set showcmd
+set shortmess+=I
+set number
+set relativenumber
+set laststatus=2
+set backspace=indent,eol,start
+set hidden
+set ignorecase
+set smartcase
+set incsearch
+set hls     " highlight search
+set tabstop=4
+set expandtab   " converts tabs into spaces
+filetype plugin indent on
+set tabstop=8
+set expandtab
+set softtabstop=4
+set shiftwidth=4
+set wrap
+filetype indent on
+" Unbind some useless/annoying default key bindings.
+" 'Q' in normal mode enters Ex mode. You almost never want this.
+nmap Q <Nop>
+" Disable audible bell because it's annoying.
+set noerrorbells visualbell t_vb=
+
+" Enable mouse support. You should avoid relying on this too much, but it can
+" sometimes be convenient.
+set mouse+=a
+
+" for lightgrey color line in the right side--- adjust colorcolumn value for
+" positioning or make it variable later
+set colorcolumn=110
+highlight ColorColumn ctermbg=0 guibg=lightgrey
+
+" Try to prevent bad habits like using the arrow keys for movement.
+" Do this in normal mode...
+nnoremap <Left>  :echoe "Use h"<CR>
+nnoremap <Right> :echoe "Use l"<CR>
+nnoremap <Up>    :echoe "Use k"<CR>
+nnoremap <Down>  :echoe "Use j"<CR>
+" ...and in insert mode
+inoremap <Left>  <ESC>:echoe "Use h"<CR>
+inoremap <Right> <ESC>:echoe "Use l"<CR>
+inoremap <Up>    <ESC>:echoe "Use k"<CR>
+inoremap <Down>  <ESC>:echoe "Use j"<CR>
+
+" opening a new window split down/right
+set splitbelow
+set splitright
+
+" map leader key to space (default was \)
+let mapleader = " "
+
+" switching between split windows
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+
+" saving current buffer
+nnoremap <leader>o :w<cr>
+
+" open terminal
+nnoremap <leader>t :ter<cr>
+" nnoremap <leader>v :vert<cr>
+
+
+"move lines around
+nnoremap <leader>k :m-2<cr>==
+nnoremap <leader>j :m+<cr>==
+xnoremap <leader>k :m-2<cr>gv=gv
+xnoremap <leader>j :m'>+<cr>gv=gv
+
+" organise all swap files in one place, note since swap files are not in same directory of file, it will not warn if a file is already open in other buffer
+set directory^=$HOME/.vim/temp//
+set noswapfile " dont create swp files or any backup files in vim
+" to avoid commenting when moving to a new line with o/O from a commented line
+au FileType * set fo-=c fo-=r fo-=o
+
+
+
+
+" ------------------ Plugins -----------------------
+call plug#begin('~/.vim/plugged')
+
+" miscellaneous
+Plug 'preservim/nerdtree'   " file explorer
+Plug 'tpope/vim-fugitive'   " for git (refer repo for usage)
+Plug 'tpope/vim-commentary' " for commenting a line or block
+Plug 'jeetsukumaran/vim-buffergator'    " buffers explorer
+Plug 'mbbill/undotree'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-obsession'  " storing vim sessions
+
+" for theming
+Plug 'vim-airline/vim-airline'  " statusline theme
+Plug 'vim-airline/vim-airline-themes'   " statusline theme
+Plug 'morhetz/gruvbox'      " gruvbox theme
+Plug 'ryanoasis/vim-devicons' " for icons in nerdtree - download nerdfont to
+" work
+Plug 'severin-lemaignan/vim-minimap'   " minimap sidebar for overall view - see config below <leader> mm | <leader>mc
+" Plug 'sheerun/vim-polyglot'
+
+" file finding
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
+" web dev plugins
+Plug 'mattn/emmet-vim'  " for html and css snippets
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'leafgarland/typescript-vim'   " for typescript support
+Plug 'peitalin/vim-jsx-typescript' " syntax highlight for jsx in TS --(maybe not required)
+Plug 'maxmellon/vim-jsx-pretty'     " for jsx highlight
+Plug 'yuezk/vim-js'     " for enhancing vim-jsx-pretty(maybe not required)
+Plug 'Yggdroot/indentline'  " shows lines on indent
+Plug 'frazrepo/vim-rainbow'         " for colored paranthesis -- check advanced config on git if needed
+Plug 'mLaursen/vim-react-snippets' " for react snippets
+Plug 'easymotion/vim-easymotion'
+" for formatiing code
+Plug 'Chiel92/vim-autoformat'
+" Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+
+call plug#end()
+
+
+
+" ==================== Plugin configs ============================
+
+" leafgarland
+"automatically indent chained methods as typed
+setlocal indentkeys+=0
+let g:typescript_indent_disable = 1     "disabling plugins custom indenter
+
+" Coc
+let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-tsserver', 'coc-eslint']
+
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+    let col = col('.') - 1
+
+    return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+            \ pumvisible() ? "\<C-n>" :
+            \ <SID>check_back_space() ? "\<Tab>" :
+            \ coc#refresh()
+
+
+" \ 'coc-eslint',
+" coc snippets   - press enter to select a suggestion whether a snippet or keyword , use tab to navigate
+inoremap <silent><expr> <cr>
+            \ pumvisible() ? coc#_select_confirm() :
+            \ "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+
+"nerdtree remap
+nnoremap <Leader>n : NERDTreeToggle<CR>
+
+
+"vim-rainbow
+let g:rainbow_active = 1
+
+" vim-commentary
+autocmd FileType apache setlocal commentstring=#\ %s    " for supporting multiple languages
+
+
+
+" vim-obsession- adding to statusline
+set statusline+=%{ObsessionStatus()}
+
+
+"buffergator
+let g:buffergator_suppress_keymaps = 1
+nnoremap <Leader>b :BuffergatorToggle<CR>
+let g:buffergator_viewport_split_policy="T"
+let g:buffergator_autoexpand_on_split=0
+let g:buffergator_split_size=10
+let g:buffergator_display_regime='filepath'
+
+
+
+"gruvbox
+autocmd vimenter * colorscheme gruvbox
+set background=dark
+let g:gruvbox_bold=1
+let g:gruvbox_contrast_dark = 'hard'
+
+
+
+" airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#formatter = 'default'
+
+" fuzzy file finder
+nnoremap <C-p> :FZF<CR>
+let g:fzf_action = {
+            \ 'ctrl-t': 'tab split',
+            \ 'ctrl-s': 'split',
+            \ 'ctrl-v': 'vsplit'
+            \}
+
+" fzf ignore node modules
+" for this to work install silversearcher -   apt-get install silversearcher-ag
+"https://github.com/ggreer/the_silver_searcher
+let $FZF_DEFAULT_COMMAND = 'ag -g  ""'
+
+"below one also searches for hidden files - ignoring node modules
+" use below if want to search for hidden files also
+" let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -f -g ""'
+
+
+
+" indentline
+let g:indentLine_color_term = 239
+set conceallevel=1
+let g:indentLine_conceallevel=1
+
+
+" easymotion
+" <Leader>f{char} to move to {char}
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+
+" s{char}{char} to move to {char}{char}
+nmap s <Plug>(easymotion-overwin-f2)
+
+" Move to line
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
+
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
+
+
+" vim-autoformat
+au BufWrite * :Autoformat   " autoformat files on save (install pep8 in terminal for python and for js install js-beautify)
+
+
+" for autoformat to work
+" run npm init in home directory
+" install -sudo npm install eslint -g
+" run eslint --init
+
+
+" prettier
+" let g:prettier#autoformat = 1
+" let g:prettier#autoformat_require_pragma = 0
+
+
+
+" --------------to be configured
+" undotree
+nnoremap <F5> :UndotreeToggle<cr>
+if !exists('g:undotree_WindowLayout')
+    let g:undotree_WindowLayout = 1
+endif
+
+" e.g. using 'd' instead of 'days' to save some space.
+if !exists('g:undotree_ShortIndicators')
+    let g:undotree_ShortIndicators = 0
+endif
+
+" undotree window width
+if !exists('g:undotree_SplitWidth')
+    if g:undotree_ShortIndicators == 1
+        let g:undotree_SplitWidth = 24
+    else
+        let g:undotree_SplitWidth = 30
+    endif
+endif
+
+" diff window height
+if !exists('g:undotree_DiffpanelHeight')
+    let g:undotree_DiffpanelHeight = 10
+endif
+
+" auto open diff window
+if !exists('g:undotree_DiffAutoOpen')
+    let g:undotree_DiffAutoOpen = 1
+endif
+
+" if set, let undotree window get focus after being opened, otherwise
+" focus will stay in current window.
+if !exists('g:undotree_SetFocusWhenToggle')
+    let g:undotree_SetFocusWhenToggle = 0
+endif
+

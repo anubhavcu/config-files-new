@@ -1,0 +1,43 @@
+=========tmux basics ============
+-- remapped -- see tmux.conf for more details
+prefix - <C-a>
+
+1. Sessions
+----------------
+
+a. tmux ls  - list sessions
+b. tmux attach -t {session #}
+c. prefix -d    - deattach current session
+d. tmux     - new session
+e. tmux new -s {session name}
+f. prefix :rename-session    - rename session from inside tmux
+
+-----
+kill-session
+a. prefix :kill-session     - kill session from within
+b. tmux kill-session -t {session name/#}
+c. tmux kill-server     - kill all sessions
+
+
+2. panes and windows
+-----------------
+a. vertical and horizontal spilt
+prefix-v
+prefix- -
+
+b. prefix-c     -new window
+
+c. navigating windows and panes
+prefix-p
+prefix-n
+prefix-{number}
+
+prefix-h/j/k/l  - select pane
+
+* note - for navigating windows - prefix-<C-h> or prefix-<C-l>, also works ,but numbers/p/n are more comfortable
+d. resizing panes
+prefix-H/J/K/L
+prefix-z     - toggle current pane fullscreen
+
+e. prefix ,      - rename current window
+

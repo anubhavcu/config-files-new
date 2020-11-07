@@ -1,0 +1,61 @@
+1. coc-diagnostics - 
+    [g  - prev
+    ]g  -next
+
+2. gd - goto definition 
+    gr - goto references 
+    gi - goto implementation 
+    gy - type definition 
+
+3. K (shift-k)  - in normal mode - show documentation in preview window 
+
+4. F2  - rename current word 
+    --- :copen  (shows quick fix list , where the changes have been made)
+
+  --------------------------------------------------------
+5. <leader> f   - format selected code - in visual mode
+
+6. <leader> a   - codeAction (for selected text in visual mode)
+
+7. <leader> ac - codeAction for current line 
+
+8. <leader> qf - auto fix problem of the current line 
+
+-------------------------------------------------------
+for selection 
+9. in Visual mode : 
+      if   = inner func 
+      af   = around func 
+10. <C-d>  = incrementally selects blocks 
+----------------------------------------------------------
+
+11. :Format  = formats the current buffer 
+
+12. :Fold     = folds the current buffer 
+
+13. :OR       = Organizes imports of current buffer 
+
+--------------------------------------------------------- 
+
+14. <space> d   - show all diagnostics 
+
+15. <space> e   - show all extensions 
+
+16. <space> c   - show all coc commands 
+
+17. <space> s   - search current workspace 
+
+18. <space> j/k   - do default action for next/prev item 
+
+19. <space> p   - resume latest coc list 
+
+---------------------------------------------
+20. :Coc<tab>     - check options such as CocList, CocInstall, CocUpdate etc. for more tweaks 
+
+21. custom snippets - 
+:CocCommand snippets.editSnippets 
+
+eg -
+snippet cl "console.log" b 
+console.log($1) 
+endsnippet

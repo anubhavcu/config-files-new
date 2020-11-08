@@ -11,12 +11,14 @@ c. prefix -d    - deattach current session
 d. tmux     - new session
 e. tmux new -s {session name}
 f. prefix :rename-session    - rename session from inside tmux
+g. prefix -s    - shows windows in a session(navigate and select)
 
 -----
 kill-session
 a. prefix :kill-session     - kill session from within
 b. tmux kill-session -t {session name/#}
 c. tmux kill-server     - kill all sessions
+d. :kill-window -t [window_number] 
 
 
 2. panes and windows

@@ -84,17 +84,20 @@ Plug 'tpope/vim-commentary' " for commenting a line or block
 Plug 'jeetsukumaran/vim-buffergator'    " buffers explorer
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-obsession'  " storing vim sessions
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+" Plug 'scrooloose/nerdtree'
+" Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'easymotion/vim-easymotion'
 
+Plug 'preservim/nerdtree' |
+            \ Plug 'Xuyuanp/nerdtree-git-plugin' |
+            \ Plug 'ryanoasis/vim-devicons'
 
 " for theming
 Plug 'vim-airline/vim-airline'  " statusline theme
 Plug 'vim-airline/vim-airline-themes'   " statusline theme
 Plug 'morhetz/gruvbox'
-Plug 'ryanoasis/vim-devicons'
+" Plug 'ryanoasis/vim-devicons'
 Plug 'frazrepo/vim-rainbow'         " for colored paranthesis -- check advanced config on git if needed
 
 
@@ -212,7 +215,6 @@ let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'default'
 
-
 " ----------------------------------------------------------
 "airline-themes  --- checkout more themes for airline later
 let g:airline_theme='angr'
@@ -261,18 +263,19 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
                 \ 'Clean'     :'✔︎',
                 \ 'Unknown'   :'?',
                 \ }
-" let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-" let g:NERDTreeGitStatusNodeColorization = 1
-" let g:NERDTreeColorMapCustom = {
-"     \ "Staged"    : "#0ee375",  
-"     \ "Modified"  : "#d9bf91",  
-"     \ "Renamed"   : "#51C9FC",  
-"     \ "Untracked" : "#FCE77C",  
-"     \ "Unmerged"  : "#FC51E6",  
-"     \ "Dirty"     : "#FFBD61",  
-"     \ "Clean"     : "#87939A",   
-"     \ "Ignored"   : "#808080"   
-"     \ }                         
+" let g:NERDTreeGitStatusUntrackedFilesMode = 'all'
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+let g:NERDTreeGitStatusNodeColorization = 1
+let g:NERDTreeColorMapCustom = {
+    \ "Staged"    : "#0ee375",  
+    \ "Modified"  : "#d9bf91",  
+    \ "Renamed"   : "#51C9FC",  
+    \ "Untracked" : "#FCE77C",  
+    \ "Unmerged"  : "#FC51E6",  
+    \ "Dirty"     : "#FFBD61",  
+    \ "Clean"     : "#87939A",   
+    \ "Ignored"   : "#808080"   
+    \ }                         
 
 
 " let g:NERDTreeIgnore = ['^node_modules$']
@@ -298,7 +301,7 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 " ----------------------------------------------
 " coc config
 
-g:coc_filetype_map
+" let g:coc_filetype_map
 
 let g:coc_global_extensions = [
   \ 'coc-snippets',

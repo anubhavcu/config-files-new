@@ -1,3 +1,5 @@
+** imp - run tmux -u for full utf support (in case if dev-icons are not working )
+ 
 =========tmux basics ============
 -- remapped -- see tmux.conf for more details
 prefix - <C-a>

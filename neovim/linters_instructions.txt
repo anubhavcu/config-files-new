@@ -1,4 +1,5 @@
-install linters to check for errors 
+Install linters to check for errors 
+-----------------------------------------
 -- usually in react apps it isn't required as it is installed as a dependency 
 -- but for normal files or vanilla js/python we need to install linters in system to check for errors 
 
@@ -26,3 +27,14 @@ SKIP_PREFLIGHT_CHECK=true
 - to configure linter for python 
 :CocCommand 
 -- then look for python.setLinter   =>  preferring pylint over flake8 for now. 
+
+
+-----------------------------------------------------
+Language Servers: 
+Follow the link below to learn more about each specific language's language server, either we can install it or configure it in coc-settings.json (in most cases only one option is required) :
+  --https://github.com/neoclide/coc.nvim/wiki/Language-servers#html 
+
+eg: for python- :CocInstall coc-python  ( no need to configure in coc-settings.json file)
+    for js - :CocInstall coc-tsserver
+
+- must check this link if reconfiguring everything again

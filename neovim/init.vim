@@ -8,8 +8,13 @@ noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
 noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
 
 set relativenumber
+set nu rnu   " for relative-hybrid numbers"
 
 set encoding=UTF-8  " specially for devicons
+
+" for case sensitive search if any capital character is present otherwise search all
+set ignorecase 
+set smartcase
 
 set smarttab
 set cindent
@@ -85,13 +90,13 @@ Plug 'jeetsukumaran/vim-buffergator'    " buffers explorer
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-obsession'  " storing vim sessions
 " Plug 'scrooloose/nerdtree'
-" Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'easymotion/vim-easymotion'
 
-Plug 'preservim/nerdtree' |
-            \ Plug 'Xuyuanp/nerdtree-git-plugin' |
-            \ Plug 'ryanoasis/vim-devicons'
+Plug 'preservim/nerdtree' 
+Plug 'Xuyuanp/nerdtree-git-plugin' 
+Plug 'ryanoasis/vim-devicons'
 
 " for theming
 Plug 'vim-airline/vim-airline'  " statusline theme
@@ -116,7 +121,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 
 "Plug 'tsony-tsonev/nerdtree-git-plugin'
-" Plug 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 " Plug 'scrooloose/nerdcommenter'
 "Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 " Plug 'christoomey/vim-tmux-navigator'
@@ -129,6 +134,18 @@ call plug#end()
 " ----------------Plugin configs-----------------------------------
 
 
+" gitgutter
+" togglegitgutter:
+" turn off with :GitGutterDisable
+" turn on with :GitGutterEnable
+" toggle with :GitGutterToggle.
+
+" to move between changes (also called hunks)
+nmap ]h <Plug>(GitGutterNextHunk)
+nmap [h <Plug>(GitGutterPrevHunk)
+
+
+" -------------------------------------------------
 "vim-rainbow
 let g:rainbow_active = 1
 
@@ -226,31 +243,59 @@ nnoremap <Leader>n : NERDTreeToggle<CR>
 " nmap <C-n> :NERDTreeToggle<CR>
 vmap ++ <plug>NERDCommenterToggle
 nmap ++ <plug>NERDCommenterToggle
-" Highlight currently open buffer in NERDTree **awesome
-autocmd BufEnter * call SyncTree()
-"open nerdtree when neovim lauches(also using this for preventing multiple nerdtree windows opening on starting it first time )
-au VimEnter *  NERDTree
+"open nerdtree when neovim lauches(also using this for preventing multiple nerdtree windows opening on starting it first time )   -- this problem of opening multiple windows was due to SyncTree function below (which was intended to highlight the current buffer in nerdtree)  ( to highlight current buffer in nerdtree see keybinding below, or use :NERDTreeFind)
+" autocmd VimEnter *  NERDTree
 
+
+"below lines prevent nerdtree from opening if opening a saved session.  -- use this option if 'starting nerdtree at vim startup' is on
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") && v:this_session == "" | NERDTree | endif
+
+nmap ,n :NERDTreeFind<CR>
+
+
+" close vim if only window left open is nerdtree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " sync open file with NERDTree
 " " Check if NERDTree is open or active
-function! IsNERDTreeOpen()        
-  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
-endfunction
+" function! IsNERDTreeOpen()        
+"   return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
+" endfunction
 
+
+" Highlight currently open buffer in NERDTree **awesome
+" autocmd BufEnter * call SyncTree()
 " Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
 " file, and we're not in vimdiff
-function! SyncTree()
-  if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
-    NERDTreeFind
-    wincmd p
-  endif
-endfunction
+" function! SyncTree()
+"   if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
+"     NERDTreeFind
+"     wincmd p
+"   endif
+" endfunction
 
+" On startup, focus NERDTree if opening a directory, focus file if opening a file.
+" let g:nerdtree_tabs_smart_startup_focus = 1
 
 let g:NERDTreeGitStatusWithFlags = 1
 let g:NERDTreeGitStatusUseNerdFonts = 1 " you should install nerdfonts by yourself. default: 0
 
+
+"disable arrow icons at the left side of folders for nerdtree
+" let g:NERDTreeDirArrowExpandable = "\u00a0"
+" let g:NERDTreeDirArrowCollapsible = "\u00a0"
+" --or use this option
+let g:NERDTreeDirArrowExpandable = ''
+let g:NERDTreeDirArrowCollapsible = ''
+
+"color highlights file names 
+let g:NERDTreeFileExtensionHighlightFullName = 1 
+
+" --------------------xxxxxxxxxxxxxxx-----------------
+" git icons still NOT working --- debug it soon
+" let g:NERDTreeGitStatusShowClean = 1
+" let g:NERDTreeGitStatusUntrackedFilesMode = 'all' " a heave feature too. default: normal
 let g:NERDTreeGitStatusIndicatorMapCustom = {
                 \ 'Modified'  :'✹',
                 \ 'Staged'    :'✚',
@@ -263,7 +308,7 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
                 \ 'Clean'     :'✔︎',
                 \ 'Unknown'   :'?',
                 \ }
-"commenting below lines works to show git status symbols in nerdtree
+
 " let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 " let g:NERDTreeGitStatusNodeColorization = 1
 " let g:NERDTreeColorMapCustom = {

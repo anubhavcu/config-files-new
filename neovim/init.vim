@@ -263,19 +263,19 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
                 \ 'Clean'     :'✔︎',
                 \ 'Unknown'   :'?',
                 \ }
-" let g:NERDTreeGitStatusUntrackedFilesMode = 'all'
-let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-let g:NERDTreeGitStatusNodeColorization = 1
-let g:NERDTreeColorMapCustom = {
-    \ "Staged"    : "#0ee375",  
-    \ "Modified"  : "#d9bf91",  
-    \ "Renamed"   : "#51C9FC",  
-    \ "Untracked" : "#FCE77C",  
-    \ "Unmerged"  : "#FC51E6",  
-    \ "Dirty"     : "#FFBD61",  
-    \ "Clean"     : "#87939A",   
-    \ "Ignored"   : "#808080"   
-    \ }                         
+"commenting below lines works to show git status symbols in nerdtree
+" let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+" let g:NERDTreeGitStatusNodeColorization = 1
+" let g:NERDTreeColorMapCustom = {
+"     \ "Staged"    : "#0ee375",  
+"     \ "Modified"  : "#d9bf91",  
+"     \ "Renamed"   : "#51C9FC",  
+"     \ "Untracked" : "#FCE77C",  
+"     \ "Unmerged"  : "#FC51E6",  
+"     \ "Dirty"     : "#FFBD61",  
+"     \ "Clean"     : "#87939A",   
+"     \ "Ignored"   : "#808080"   
+"     \ }                         
 
 
 " let g:NERDTreeIgnore = ['^node_modules$']
@@ -301,6 +301,7 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 " ----------------------------------------------
 " coc config
 
+" check this option for config later
 " let g:coc_filetype_map
 
 let g:coc_global_extensions = [

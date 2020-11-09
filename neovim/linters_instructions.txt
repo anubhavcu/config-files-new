@@ -1,0 +1,28 @@
+install linters to check for errors 
+-- usually in react apps it isn't required as it is installed as a dependency 
+-- but for normal files or vanilla js/python we need to install linters in system to check for errors 
+
+1. javascript 
+---------------------
+
+- install es-lint globally  - npm install es-lint 
+- npm init  (in home folder)
+- es-lint init 
+
+** Note- this could cause problems while running server for react apps as create-react-app utility comes with a version of es-lint which conflicts with system defaults 
+-- to solve this we could us nvm 
+-- or create a .env file in project folder and write:
+SKIP_PREFLIGHT_CHECK=true
+
+-- also look for some effective solution to this. 
+
+
+2. python 
+---------------------
+
+- :CocInstall coc-python 
+-- after this install linter (it will ask when running if not present, also install globally)
+
+- to configure linter for python 
+:CocCommand 
+-- then look for python.setLinter   =>  preferring pylint over flake8 for now. 

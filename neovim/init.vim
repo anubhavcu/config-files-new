@@ -90,13 +90,13 @@ Plug 'jeetsukumaran/vim-buffergator'    " buffers explorer
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-obsession'  " storing vim sessions
 " Plug 'scrooloose/nerdtree'
+Plug 'ryanoasis/vim-devicons'
+Plug 'preservim/nerdtree' 
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'easymotion/vim-easymotion'
 
-Plug 'preservim/nerdtree' 
-Plug 'Xuyuanp/nerdtree-git-plugin' 
-Plug 'ryanoasis/vim-devicons'
+" Plug 'Xuyuanp/nerdtree-git-plugin' 
 
 " for theming
 Plug 'vim-airline/vim-airline'  " statusline theme
@@ -119,6 +119,7 @@ Plug 'mlaursen/vim-react-snippets'
 
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
+Plug 'mattn/emmet-vim'    " required for jsx files, coc works fine with standalone html files but doesn't show snippets in jsx file
 
 "Plug 'tsony-tsonev/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'

@@ -213,6 +213,9 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'default'
 
 
+" ----------------------------------------------------------
+"airline-themes  --- checkout more themes for airline later
+let g:airline_theme='angr'
 
 
 " --------------------------------------------------------------------------

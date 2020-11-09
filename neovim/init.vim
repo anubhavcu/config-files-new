@@ -199,6 +199,7 @@ autocmd FileType apache setlocal commentstring=#\ %s    " for supporting multipl
 " ---------------------------------------------------
 "gruvbox
 colorscheme gruvbox
+set background=dark
 " ----------- below is optional (use if not working properly)
 " autocmd vimenter * colorscheme gruvbox
 " set background=dark

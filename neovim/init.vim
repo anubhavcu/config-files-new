@@ -25,7 +25,7 @@ set expandtab
 " from readme
 " if hidden is not set, TextEdit might fail.
 set hidden " Some servers have issues with backup files, see #649 set nobackup set nowritebackup " Better display for messages set cmdheight=2 " You will have bad experience for diagnostic messages when it's default 4000.
-set updatetime=300
+set updatetime=100
 
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
@@ -90,9 +90,9 @@ Plug 'jeetsukumaran/vim-buffergator'    " buffers explorer
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-obsession'  " storing vim sessions
 " Plug 'scrooloose/nerdtree'
-Plug 'ryanoasis/vim-devicons'
 Plug 'preservim/nerdtree' 
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'easymotion/vim-easymotion'
 
@@ -126,6 +126,10 @@ Plug 'airblade/vim-gitgutter'
 " Plug 'scrooloose/nerdcommenter'
 "Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 " Plug 'christoomey/vim-tmux-navigator'
+
+" plugin for nvim in browser
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+
 
 " Initialize plugin system
 call plug#end()

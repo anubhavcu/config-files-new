@@ -119,7 +119,8 @@ Plug 'mlaursen/vim-react-snippets'
 
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
-Plug 'mattn/emmet-vim'    " required for jsx files, coc works fine with standalone html files but doesn't show snippets in jsx file
+" -- will see if below plugin is required 
+ " Plug 'mattn/emmet-vim'    " required for jsx files, coc works fine with standalone html files but doesn't show snippets in jsx file
 
 "Plug 'tsony-tsonev/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'

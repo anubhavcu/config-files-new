@@ -1,0 +1,13 @@
+1. vscode keybindings - 
+  - https://code.visualstudio.com/docs/getstarted/keybindings
+
+2. vscode tips 
+  - https://code.visualstudio.com/docs/getstarted/tips-and-tricks 
+
+3. *vscode marketplace - vim 
+  - https://marketplace.visualstudio.com/items?itemName=vscodevim.vim 
+
+4. medium blog for vim setup in vscode 
+  - https://medium.com/@hoitz/improved-vim-setup-in-visual-studio-code-bc579501b80c 
+
+

@@ -1,69 +1,86 @@
+{"editor.fontSize":22,
+"terminal.integrated.fontSize": 18,
+"editor.wordWrap": "on",
+"editor.tabsize" : 2,
+
+"editor.formatOnSave": true,
+
+    "vim.insertModeKeyBindingsNonRecursive": [
+      {
+        "before": ["j", "j"],
+        "after": ["<ESC>"]
+      }
+    ],
+    "vim.normalModeKeyBindings": [
+      {
+        "before" : ["<leader>", "d"],
+        "after" : ["d", "d"]
+      },
 {
-  "editor.fontSize": 22,
-  "terminal.integrated.fontSize": 18,
-  "vim.insertModeKeyBindingsNonRecursive": [
-    {
-      "before": ["j", "j"],
-      "after": ["<ESC>"]
-    }
-  ],
-  "vim.normalModeKeyBindings": [
-    {
-      "before": ["<leader>", "d"],
-      "after": ["d", "d"]
-    },
-    {
       "before": ["<C-n>"],
       "commands": [":nohl"]
     },
     {
-      "before": ["<leader>", "o"],
-      "commands": ["workbench.action.files.save"]
-    },
-    {
-      "before": ["<leader>", "v"],
-      "commands": ["workbench.action.splitEditor"]
-    },
-    {
-      "before": ["<leader>", "n"],
-      "commands": ["workbench.action.toggleSidebarVisibility"]
-    },
-    {
-      "before": ["<leader>", "f"],
-      "commands": ["revealInExplorer"]
-    },
-    {
-      "before": ["<leader>", "r", "f"],
-      "commands": ["fileutils.renameFile"]
-    }
-  ],
+    "before" : ["<leader>", "o"],
+    "commands":[
+      "workbench.action.files.save"
+    ]
 
-  "vim.statusBarColorControl": true,
-  "vim.statusBarColors.normal": ["#8FBCBB", "#434C5E"],
-  "vim.statusBarColors.insert": "#BF616A",
-  "vim.statusBarColors.visual": "#B48EAD",
-  "vim.statusBarColors.visualline": "#B48EAD",
-  "vim.statusBarColors.visualblock": "#A3BE8C",
-  "vim.statusBarColors.replace": "#D08770",
-  "vim.statusBarColors.commandlineinprogress": "#007ACC",
-  "vim.statusBarColors.searchinprogressmode": "#007ACC",
-  "vim.statusBarColors.easymotionmode": "#007ACC",
-  "vim.statusBarColors.easymotioninputmode": "#007ACC",
-  "vim.statusBarColors.surroundinputmode": "#007ACC",
-  "vim.easymotion": true,
-  "vim.incsearch": true,
-  "vim.useSystemClipboard": true,
-  "vim.useCtrlKeys": true,
-  "vim.hlsearch": true,
-  "vim.surround": true,
-  "vim.leader": "<space>",
-
-  "editor.lineNumbers": "relative",
-  "vim.leader": " ",
-  "workbench.colorCustomizations": {
-    "statusBar.background": "#8FBCBB",
-    "statusBar.noFolderBackground": "#8FBCBB",
-    "statusBar.debuggingBackground": "#8FBCBB",
-    "statusBar.foreground": "#434C5E"
+    },
+    {
+      "before" : ["<leader>" , "v"],
+      "commands" : ["workbench.action.splitEditor"]
+    },{
+    "before": ["<leader>", "n"],
+    "commands": ["workbench.action.toggleSidebarVisibility"]
+  },
+  {
+    "before": ["<leader>", "f"],
+    "commands": [ "revealInExplorer" ],
+    // use <, n> to close the sidebar when focus is on sidebar 
+  },
+  {
+    "before": ["<leader>", "r", "f"],
+    "commands": [ "fileutils.renameFile" ]
   }
+    ],
+    
+"vim.statusBarColorControl": true,
+    "vim.statusBarColors.normal": ["#8FBCBB", "#434C5E"],
+    "vim.statusBarColors.insert": "#BF616A",
+    "vim.statusBarColors.visual": "#B48EAD",
+    "vim.statusBarColors.visualline": "#B48EAD",
+    "vim.statusBarColors.visualblock": "#A3BE8C",
+    "vim.statusBarColors.replace": "#D08770",
+    "vim.statusBarColors.commandlineinprogress": "#007ACC",
+    "vim.statusBarColors.searchinprogressmode": "#007ACC",
+    "vim.statusBarColors.easymotionmode": "#007ACC",
+    "vim.statusBarColors.easymotioninputmode": "#007ACC",
+    "vim.statusBarColors.surroundinputmode": "#007ACC",
+    "vim.easymotion": true,
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.hlsearch": true,
+    "vim.surround": true,
+    "vim.leader" : "<space>",
+
+    "editor.lineNumbers": "relative",
+    "vim.leader": " ",
+    "workbench.colorCustomizations": {
+      "statusBar.background": "#8FBCBB",
+      "statusBar.noFolderBackground": "#8FBCBB",
+      "statusBar.debuggingBackground": "#8FBCBB",
+      "statusBar.foreground": "#434C5E"
+    },
+    "workbench.iconTheme": "vscode-icons",
+    "vsicons.dontShowNewVersionMessage": true,
+    "editor.formatOnSave": true,
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+
 }

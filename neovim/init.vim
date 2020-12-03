@@ -1,6 +1,5 @@
 " =================new config file for neovim for js =============================
 
-
 " map leader key to space (default was \)
 let mapleader = " "
 " j/k will move virtual lines (lines that wrap)
@@ -120,7 +119,7 @@ Plug 'mlaursen/vim-react-snippets'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 " -- will see if below plugin is required 
- " Plug 'mattn/emmet-vim'    " required for jsx files, coc works fine with standalone html files but doesn't show snippets in jsx file
+ Plug 'mattn/emmet-vim'    " required for jsx files, coc works fine with standalone html files but doesn't show snippets in jsx file
 
 "Plug 'tsony-tsonev/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
@@ -131,6 +130,9 @@ Plug 'airblade/vim-gitgutter'
 " plugin for nvim in browser
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 
+" for syntax highlighting for js and jsx files ( both are required)
+Plug 'yuezk/vim-js'
+Plug 'maxmellon/vim-jsx-pretty'
 
 " Initialize plugin system
 call plug#end()

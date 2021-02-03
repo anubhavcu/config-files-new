@@ -70,5 +70,6 @@
   "liveServer.settings.donotShowInfoMsg": true,
   "workbench.colorTheme": "Gruvbox Dark Hard",
   "editor.fontFamily": "'fira code'",
-  "editor.fontLigatures": true // joins characters (=> or === )
+  "editor.fontLigatures": true,
+  "editor.cursorBlinking": "expand"
 }

@@ -1,7 +1,7 @@
 {
   "workbench.startupEditor": "newUntitledFile",
   "editor.fontSize": 22,
-  "editor.tabSize": 2,
+  "editor.tabSize": 4,
   "editor.wordWrap": "on",
   "terminal.integrated.fontSize": 18,
   "workbench.iconTheme": "vscode-icons",
@@ -11,6 +11,9 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.python"
   },
   "editor.suggestSelection": "first",
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
@@ -66,10 +69,13 @@
       "commands": ["fileutils.renameFile"]
     }
   ],
-  "python.languageServer": "Microsoft",
+  "python.languageServer": "Pylance",
   "liveServer.settings.donotShowInfoMsg": true,
-  "workbench.colorTheme": "Gruvbox Dark Hard",
+  "workbench.colorTheme": "Atom One Dark",
   "editor.fontFamily": "'fira code'",
-  "editor.fontLigatures": true,
-  "editor.cursorBlinking": "expand"
+  // "editor.fontLigatures": true,
+  "editor.cursorBlinking": "expand",
+  "python.showStartPage": false,
+  "vsicons.dontShowNewVersionMessage": true
+  // "python.formatting.provider": "black"   // using pep8 for now
 }

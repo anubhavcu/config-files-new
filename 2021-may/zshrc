@@ -91,6 +91,9 @@ VI_MODE_SET_CURSOR=true
 # enabling vim mode 
 bindkey -v
 
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -122,4 +125,6 @@ bindkey -v
 
 neofetch
 
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source /home/anubhav/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

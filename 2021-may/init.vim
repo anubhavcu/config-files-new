@@ -176,8 +176,8 @@ let g:rainbow_active = 1
 " nmap s <Plug>(easymotion-overwin-f2)
 
 " Move to line
-map <Leader>L <Plug>(easymotion-bd-jk)
-nmap <Leader>L <Plug>(easymotion-overwin-line)
+map <Leader>l <Plug>(easymotion-bd-jk)
+nmap <Leader>l <Plug>(easymotion-overwin-line)
 
 " Move to word
 map  <Leader>w <Plug>(easymotion-bd-w)
@@ -226,6 +226,8 @@ set background=dark
 " fzf
 " nnoremap <C-p> :FZF<CR>
 nnoremap <C-p> :Files<CR>
+" :Ag => to search for text within files - remember to install silversearcher for this to work
+
 let g:fzf_action = {
       \ 'ctrl-t': 'tab split',
       \ 'ctrl-s': 'split',
@@ -499,7 +501,7 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 au FocusGained,BufEnter * :checktime
 
-
+map <F4> :!ls<CR>:e
 
 
 " ==============================================================

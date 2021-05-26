@@ -77,10 +77,14 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-vi-mode
+plugins=(
 	zsh-syntax-highlighting
 	zsh-autosuggestions
 )
+# enabling vim mode 
+# add following plugin for vim mode in zsh - zsh-vi-mode (also clone its repo in ~/.zshrc folder)
+# bindkey -v
+
 
 source $ZSH/oh-my-zsh.sh
 
@@ -88,8 +92,6 @@ VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
 VI_MODE_SET_CURSOR=true
 
 
-# enabling vim mode 
-bindkey -v
 
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
@@ -123,7 +125,7 @@ typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-neofetch
+# neofetch
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

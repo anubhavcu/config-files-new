@@ -39,6 +39,8 @@ set signcolumn=yes
 set colorcolumn=110
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
+set noswapfile
+
 " Try to prevent bad habits like using the arrow keys for movement.
 " Do this in normal mode...
 nnoremap <Left>  :echoe "Use h"<CR>

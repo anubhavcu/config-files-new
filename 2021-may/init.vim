@@ -142,12 +142,17 @@ Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'yuezk/vim-js'
 Plug 'maxmellon/vim-jsx-pretty'
 
+Plug 'kevinoid/vim-jsonc'  " commenting json files 
+
+
+
 " Initialize plugin system
 call plug#end()
 
 
 " ====================================================================
 " ----------------Plugin configs-----------------------------------
+
 
 
 " gitgutter
@@ -381,7 +386,6 @@ let g:coc_global_extensions = [
       \ 'coc-html', 
       \ 'coc-tslint-plugin'
       \ ]
-
 
 
 " use <tab> for trigger completion and navigate to the next complete item

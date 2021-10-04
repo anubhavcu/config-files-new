@@ -16,5 +16,6 @@
     "typescriptreact"
   ],
   "eslint.autoFixOnSave": true,
-  "prettier.disableSuccessMessage": true
+  "prettier.disableSuccessMessage": true,
+ "javascript.suggestionActions.enabled": false  // disables auto conversion to es6 modules
 }

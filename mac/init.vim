@@ -19,6 +19,17 @@ set shiftwidth=2
 set expandtab 
 set hidden
 
+set ruler
+" set laststatus=2 
+" set statusline=%f
+" set statusline=%f%m%r%h%w\ [%Y]\ [0x%02.2B]%<\ %F%4v,%4l\ %3p%%\ of\ %L\ 
+set statusline=%f%m%r%h%w\ [%Y]\ %4v,%4l\ %3p%%\ of\ %L\ 
+
+
+" for full path
+" set statusline=%F
+set title " show filename in window title bar
+
 set updatetime=100 
 set shortmess+=c
 set mouse+=a
@@ -90,6 +101,13 @@ Plug 'junegunn/fzf.vim'
 " TS syntax highlighting
 Plug 'HerringtonDarkholme/yats.vim'
 
+" additional files for syntax highlighting
+Plug 'yuezk/vim-js'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+
+" autocomplete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 
